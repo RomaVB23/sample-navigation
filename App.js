@@ -1,21 +1,58 @@
-import { StatusBar } from 'expo-status-bar';
-import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import * as React from 'react';
+import { NavigationContainer } from '@react-navigation/native';
+import { createStackNavigator } from '@react-navigation/stack';
 
+// Blocks
+import Clients from './components/Clients';
+import Ivan from './components/Ivan';
+
+const Stack = createStackNavigator();
 export default function App() {
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+    <NavigationContainer>
+      <Stack.Navigator>
+        <Stack.Screen
+          name="Клиенты"
+          component={Clients}
+          options={{
+            title: 'Клиенты',
+            headerStyle: {
+              backgroundColor: '#E02329',
+              borderTopColor: '#b11f27',
+              borderTopWidth: 24,
+              height: 80,
+              padding: 100,
+            },
+            headerTintColor: '#fff',
+            headerTitleStyle: {
+              fontFamily: 'Roboto_500Medium',
+              fontSize: 20,
+              fontWeight: 500,
+            },
+          }}
+        />
+        <Stack.Screen
+          style={{ backgroundColor: '#b11f27' }}
+          name="Иван"
+          component={Ivan}
+          options={{
+            title: 'О клиенте',
+            headerStyle: {
+              backgroundColor: '#E02329',
+              borderTopColor: '#b11f27',
+              borderTopWidth: 24,
+              height: 80,
+              padding: 100,
+            },
+            headerTintColor: '#fff',
+            headerTitleStyle: {
+              fontFamily: 'Roboto_500Medium',
+              fontSize: 20,
+              fontWeight: 500,
+            },
+          }}
+        />
+      </Stack.Navigator>
+    </NavigationContainer>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
