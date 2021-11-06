@@ -25,7 +25,7 @@ export default function Clients({ navigation }) {
     );
   };
   //
-  // Список Клиентов
+  // Список Клиентов 
   const oldClients = [
     {
       name: 'Ivan',
@@ -65,34 +65,35 @@ export default function Clients({ navigation }) {
     },
   ];
   //
-  //
+  // хуки добавления клиента
   const [clients, setClients] = useState(oldClients);
   //
-  //
-  const baseClient = {
-    name: [text],
-    surname: 'Vasilevich',
-    fullname: 'Ivan Vasilevich',
-    pantomic: 'Grishko',
-    telephone: '+7-901-879-21-23',
-    cardNumber: 100500,
-    clientlocked: 'Нет',
-    numberCoupons: 3,
-    onHands: 6,
-    age: 13,
-  };
+  // хуки изменения поля ввода имени клиента
+  const [nameClient, setNameClient] = useState();
+  const [surmameClient, setSurnameClient] = useState ();
+  // 
+  // функция добавления клиента
   const addClient = () => {
     console.log(clients);
-    setClients([...clients, { ...baseClient, fullname: [text] }]);
+    setClients([...clients, {
+      name: nameClient,
+      surname: surmameClient,
+      fullname: nameClient + " " + surmameClient,
+      pantomic: '',
+      telephone: '',
+      cardNumber: 100500,
+      clientlocked: 'Нет',
+      numberCoupons: 3,
+      onHands: 6,
+      age: 13,
+     }]);
   };
-  //
-  //
-  const [text, setText] = useState();
   //
   return (
     <SafeAreaView style={styles.page}>
-      <TextInput style={styles.input} onChangeText={setText} value={text} />
-      <Button style={styles.button} title="Добавит в базу" onPress={() => addClient()}></Button>
+      <TextInput style={styles.input} onChangeText={setNameClient} value={nameClient} placeholder="Введите Имя" />
+      <TextInput style={styles.input} onChangeText={setSurnameClient} value={surmameClient} placeholder="Введите Фамилию"/>
+      <Button title="Добавит в базу" onPress={() => addClient()}></Button>
       <FlatList data={clients} renderItem={baseClients} />
     </SafeAreaView>
   );
