@@ -74,8 +74,7 @@ export default function Clients({ navigation }) {
   // 
   // функция добавления клиента
   const addClient = () => {
-    console.log(clients);
-    setClients([...clients, {
+    const client = {
       name: nameClient,
       surname: surmameClient,
       fullname: nameClient + " " + surmameClient,
@@ -86,14 +85,19 @@ export default function Clients({ navigation }) {
       numberCoupons: 3,
       onHands: 6,
       age: 13,
-     }]);
+     }
+    setClients([...clients, client]);
   };
+  const onAddClient = (client) => {
+    setClients([...clients, client])
+  }
   //
   return (
     <SafeAreaView style={styles.page}>
+      <Button title="Добавить клиента" onPress={() => navigation.navigate('Добавит Клиента', {onAddClient})}></Button>
       <TextInput style={styles.input} onChangeText={setNameClient} value={nameClient} placeholder="Введите Имя" />
       <TextInput style={styles.input} onChangeText={setSurnameClient} value={surmameClient} placeholder="Введите Фамилию"/>
-      <Button title="Добавит в базу" onPress={() => addClient()}></Button>
+      <Button title="Добавить в базу" onPress={() => addClient()}></Button>
       <FlatList data={clients} renderItem={baseClients} />
     </SafeAreaView>
   );
