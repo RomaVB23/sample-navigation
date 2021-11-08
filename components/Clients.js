@@ -114,7 +114,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   input: {
-    marginVertical: 20,
+    marginVertical: 10,
     height: 43,
     borderWidth: 1,
     borderRadius: 5,
@@ -126,7 +126,7 @@ const styles = StyleSheet.create({
   viewLine: {
     height: 2,
     backgroundColor: 'red',
-    width: 1000,
+    width: '100%',
     marginVertical: 20,
   },
 }

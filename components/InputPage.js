@@ -48,7 +48,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   viewInput: {
-    width: 500,
+    width: '50%',
 
   },
   textInput: {
@@ -65,6 +65,7 @@ const styles = StyleSheet.create({
     paddingLeft: 15,
     fontWeight: 400,
     fontSize: 16,
+    textAlign: 'center',
   },
   inputDown: {
     marginBottom: 20,
