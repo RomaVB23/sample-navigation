@@ -23,7 +23,7 @@ const styles = StyleSheet.create({
     padding: 16,
     fontFamily: 'Roboto_500Medium',
     fontSize: 20,
-    fontWeight: 500,
+    fontWeight: '500',
     color: '#FFFFFF',
   },
 });

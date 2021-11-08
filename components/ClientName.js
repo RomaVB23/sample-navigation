@@ -20,7 +20,7 @@ const styles = StyleSheet.create({
   blockText: {
     fontFamily: 'Roboto_500Medium',
     fontSize: 20,
-    fontWeight: 500,
+    fontWeight: '500',
     paddingTop: 11,
     paddingLeft: 16,
   },

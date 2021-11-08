@@ -28,7 +28,7 @@ export default function App({ navigation }) {
             headerTitleStyle: {
               fontFamily: 'Roboto_500Medium',
               fontSize: 20,
-              fontWeight: 500,
+              fontWeight: '500',
             },
           }}
         />
@@ -49,7 +49,7 @@ export default function App({ navigation }) {
             headerTitleStyle: {
               fontFamily: 'Roboto_500Medium',
               fontSize: 20,
-              fontWeight: 500,
+              fontWeight: '500',
             },
           }}
         />
@@ -69,7 +69,7 @@ export default function App({ navigation }) {
             headerTitleStyle: {
               fontFamily: 'Roboto_500Medium',
               fontSize: 20,
-              fontWeight: 500,
+              fontWeight: '500',
             },
           }}
         />

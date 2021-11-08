@@ -20,14 +20,14 @@ const styles = StyleSheet.create({
   blockTextTop: {
     fontFamily: 'Roboto_400Regular',
     fontSize: 12,
-    fontWeight: 400,
+    fontWeight: '400',
     color: 'rgba(0, 0, 0, 0.54)',
   },
   blockTextDown: {
     paddingTop: 4,
     fontFamily: 'Roboto_400Regular',
     fontSize: 16,
-    fontWeight: 400,
+    fontWeight: '400',
     color: 'rgba(0, 0, 0, 0.87)',
   },
 });

@@ -120,8 +120,9 @@ const styles = StyleSheet.create({
     borderRadius: 5,
     borderColor: '#C4C4C4',
     paddingLeft: 15,
-    fontWeight: 400,
+    fontWeight: '400',
     fontSize: 16,
+    width: '70%',
   },
   viewLine: {
     height: 2,
