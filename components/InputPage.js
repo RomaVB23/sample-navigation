@@ -13,15 +13,15 @@ export default function InputPage({ navigation, route}) {
     <SafeAreaView style={styles.page}>
       <View style={styles.viewInput}>
         <Text style={styles.textInput}>Введите имя</Text> 
-        <TextInput style={styles.input} onChangeText={setNameC} value={nameC} placeholder="Введите Имя" />
+        <TextInput style={styles.input} onChangeText={setNameC} value={nameC} placeholder="Например Роман" />
       </View>
       <View style={styles.viewInput}>
         <Text style={styles.textInput}>Введите Фамилию</Text> 
-        <TextInput style={styles.input} onChangeText={setSurnameC} value={surmameC} placeholder="Введите Фамилию"/>
+        <TextInput style={styles.input} onChangeText={setSurnameC} value={surmameC} placeholder="Например Васильев"/>
       </View>
       <View style={styles.viewInput}>
         <Text style={styles.textInput}>Введите Возраст</Text> 
-        <TextInput style={[styles.input, styles.inputDown]} onChangeText={setAgeC} value={ageC} placeholder="Введите Возраст" />
+        <TextInput style={[styles.input, styles.inputDown]} onChangeText={setAgeC} value={ageC} placeholder="Просто цифрами" />
       </View>  
 
       <Button title="Внести в базу" onPress={() => {
