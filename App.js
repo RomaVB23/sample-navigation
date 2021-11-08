@@ -58,7 +58,7 @@ const Stack = createStackNavigator();
                 borderTopColor: '#b11f27',
                 borderTopWidth: 24,
                 height: 80,
-                padding: 100,
+                // padding: 100,
               },
               headerTintColor: '#fff',
               headerTitleStyle: {
@@ -79,7 +79,7 @@ const Stack = createStackNavigator();
                 borderTopColor: '#b11f27',
                 borderTopWidth: 24,
                 height: 80,
-                padding: 100,
+                // padding: 100,
               },
               headerTintColor: '#fff',
               headerTitleStyle: {
@@ -99,7 +99,7 @@ const Stack = createStackNavigator();
                 borderTopColor: '#b11f27',
                 borderTopWidth: 24,
                 height: 80,
-                padding: 100,
+                // padding: 100,
               },
               headerTintColor: '#fff',
               headerTitleStyle: {
@@ -107,6 +107,7 @@ const Stack = createStackNavigator();
                 fontSize: 20,
                 fontWeight: '500',
               },
+              headerBackTitleVisible: false,
             }}
           />
         </Stack.Navigator>
