@@ -97,7 +97,12 @@ export default function Clients({ navigation }) {
       
       <TextInput style={styles.input} onChangeText={setNameClient} value={nameClient} placeholder="Введите Имя" />
       <TextInput style={styles.input} onChangeText={setSurnameClient} value={surmameClient} placeholder="Введите Фамилию"/>
-      <Button title="Добавить в базу" onPress={() => addClient()}></Button>
+      <Button title="Внести в базу" onPress={() => addClient()}></Button>
+
+      <View style={styles.viewLine}></View>
+        <Button title="Внести данные клиента в отдельном окне" onPress={() => { return navigation.navigate('InputPage', {onAddClient})}}></Button>
+      <View style={styles.viewLine}></View>
+
       <FlatList data={clients} renderItem={baseClients} />
     </SafeAreaView>
   );
