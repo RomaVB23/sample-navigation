@@ -5,10 +5,10 @@ import { createStackNavigator } from '@react-navigation/stack';
 // Blocks
 import Clients from './components/Clients';
 import Ivan from './components/Ivan';
-import AddNewClient from './components/AddNewClient';
+import InputPage from './components/InputPage';
 
 const Stack = createStackNavigator();
-export default function App() {
+export default function App({ navigation }) {
   return (
     <NavigationContainer>
       <Stack.Navigator>
@@ -54,8 +54,8 @@ export default function App() {
           }}
         />
         <Stack.Screen
-          name="Добавит Клиента"
-          component={AddNewClient}
+          name="InputPage"
+          component={InputPage}
           options={{
             title: 'Добавить Клиента',
             headerStyle: {

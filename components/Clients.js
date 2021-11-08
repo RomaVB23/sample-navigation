@@ -91,10 +91,10 @@ export default function Clients({ navigation }) {
   const onAddClient = (client) => {
     setClients([...clients, client])
   }
-  //
+
   return (
     <SafeAreaView style={styles.page}>
-      <Button title="Добавить клиента" onPress={() => navigation.navigate('Добавит Клиента', {onAddClient})}></Button>
+      
       <TextInput style={styles.input} onChangeText={setNameClient} value={nameClient} placeholder="Введите Имя" />
       <TextInput style={styles.input} onChangeText={setSurnameClient} value={surmameClient} placeholder="Введите Фамилию"/>
       <Button title="Добавить в базу" onPress={() => addClient()}></Button>
@@ -117,6 +117,12 @@ const styles = StyleSheet.create({
     paddingLeft: 15,
     fontWeight: 400,
     fontSize: 16,
+  },
+  viewLine: {
+    height: 2,
+    backgroundColor: 'red',
+    width: 1000,
+    marginVertical: 20,
   },
 }
 );
