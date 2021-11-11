@@ -7,9 +7,11 @@ import {
   TouchableOpacity,
   FlatList,
   Button,
-  TextInput,
+  TextInput
 } from 'react-native';
 import ClientName from './ClientName';
+// 
+import DropDownPicker from 'react-native-dropdown-picker';
 
 
 export default function Clients({ navigation }) {
@@ -38,6 +40,7 @@ export default function Clients({ navigation }) {
       numberCoupons: 3,
       onHands: 6,
       age: 13,
+      position: 'Дворник'
     },
     {
       name: 'Daria',
@@ -50,6 +53,7 @@ export default function Clients({ navigation }) {
       numberCoupons: 12,
       onHands: 1,
       age: 43,
+      position: 'Дворник'
     },
     {
       name: 'Elena',
@@ -62,6 +66,7 @@ export default function Clients({ navigation }) {
       numberCoupons: 7,
       onHands: 2,
       age: 20,
+      position: 'Дворник'
     },
   ];
   //
@@ -91,10 +96,29 @@ export default function Clients({ navigation }) {
   const onAddClient = (client) => {
     setClients([...clients, client])
   }
+  // 
+  // 
+  const [open, setOpen] = useState(false);
+  const [value, setValue] = useState(null);
+  const [items, setItems] = useState([
+    {label: 'Дворник', value: 'дворник'},
+    {label: 'Бухгалтер', value: 'бухгалтер'},
+    {label: 'Директор', value:'директор'},
+  ]);
 
   return (
     <SafeAreaView style={styles.page}>
       
+      <DropDownPicker
+      open={open}
+      value={value}
+      items={items}
+      setOpen={setOpen}
+      setValue={setValue}
+      setItems={setItems}
+    />
+
+
       <TextInput style={styles.input} onChangeText={setNameClient} value={nameClient} placeholder="Введите Имя" />
       <TextInput style={styles.input} onChangeText={setSurnameClient} value={surmameClient} placeholder="Введите Фамилию"/>
       <Button title="Внести в базу" onPress={() => addClient()}></Button>
