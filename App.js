@@ -21,9 +21,9 @@ import {
 // 
 
 // Blocks
-import Clients from './components/Clients';
-import Ivan from './components/Ivan';
-import InputPage from './components/InputPage';
+import Clients from './screens/Clients';
+import Ivan from './screens/Ivan';
+import InputPage from './screens/InputPage';
 
 const Stack = createStackNavigator();
   export default function App({ navigation }) {

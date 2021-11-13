@@ -30,7 +30,8 @@ export default function InputPage({ navigation, route}) {
           name:nameC,
           surname: surmameC,
           fullname: nameC + " " + surmameC,
-          age: ageC
+          age: ageC,
+          position: 'директор'
           }
         onAddClient (clientParams);
         navigation.goBack();

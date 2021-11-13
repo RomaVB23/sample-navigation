@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import {
   Text,
   View,
@@ -9,7 +9,7 @@ import {
   Button,
   TextInput
 } from 'react-native';
-import ClientName from './ClientName';
+import ClientName from '../components/ClientName';
 // 
 import DropDownPicker from 'react-native-dropdown-picker';
 
@@ -40,7 +40,7 @@ export default function Clients({ navigation }) {
       numberCoupons: 3,
       onHands: 6,
       age: 13,
-      position: 'Дворник'
+      position: 'дворник'
     },
     {
       name: 'Daria',
@@ -53,7 +53,7 @@ export default function Clients({ navigation }) {
       numberCoupons: 12,
       onHands: 1,
       age: 43,
-      position: 'Дворник'
+      position: 'бухгалтер'
     },
     {
       name: 'Elena',
@@ -66,12 +66,13 @@ export default function Clients({ navigation }) {
       numberCoupons: 7,
       onHands: 2,
       age: 20,
-      position: 'Дворник'
+      position: 'дворник'
     },
   ];
   //
   // хуки добавления клиента
   const [clients, setClients] = useState(oldClients);
+  const [filterClients, setFilterClients] = useState(oldClients);
   //
   // хуки изменения поля ввода имени клиента
   const [nameClient, setNameClient] = useState();
@@ -106,6 +107,14 @@ export default function Clients({ navigation }) {
     {label: 'Директор', value:'директор'},
   ]);
 
+  useEffect(() => {
+    console.log('new selected value', value);
+    const newFilterClients = clients.filter(client => client.position === value);
+    console.log('filterClients', newFilterClients);
+    setFilterClients(newFilterClients)
+  }, [value, clients])
+
+
   return (
     <SafeAreaView style={styles.page}>
       
@@ -127,7 +136,7 @@ export default function Clients({ navigation }) {
         <Button title="Внести данные клиента в отдельном окне" onPress={() => { return navigation.navigate('InputPage', {onAddClient})}}></Button>
       <View style={styles.viewLine}></View>
 
-      <FlatList data={clients} renderItem={baseClients} />
+      <FlatList data={filterClients} renderItem={baseClients} />
     </SafeAreaView>
   );
 }

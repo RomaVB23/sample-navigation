@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { Text, View, StyleSheet, SafeAreaView } from 'react-native';
-import Block from './Block';
+import Block from '../components/Block';
 
 export default function Ivan({ navigation, route }) {
   // const client = route.params.client
