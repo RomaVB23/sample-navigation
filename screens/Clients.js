@@ -115,6 +115,14 @@ export default function Clients({ navigation }) {
   }, [value, clients])
 
 
+  // В Экспо 
+  // const array = [1, 2, 3, 4, 5];
+  // for (let index = 0; index < array.length; index++) {
+  //   console.log('index', index);
+  //   const element = array[index];
+  //   console.log('element', element);  
+  // }
+
   return (
     <SafeAreaView style={styles.page}>
       

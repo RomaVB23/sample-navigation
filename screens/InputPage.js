@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Text, View, StyleSheet, SafeAreaView, TextInput, Button} from 'react-native';
-
+import Counter from '../components/Counter';
 
 export default function InputPage({ navigation, route}) {
 
@@ -11,6 +11,7 @@ export default function InputPage({ navigation, route}) {
 
   return (
     <SafeAreaView style={styles.page}>
+      <Counter title='Constructor'/>
       <View style={styles.viewInput}>
         <Text style={styles.textInput}>Введите имя</Text> 
         <TextInput style={styles.input} onChangeText={setNameC} value={nameC} placeholder="Например Роман" />
