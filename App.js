@@ -22,7 +22,7 @@ import {
 
 // Blocks
 import Clients from './screens/Clients';
-import Ivan from './screens/Ivan';
+import ClientPage from './screens/ClientPage';
 import InputPage from './screens/InputPage';
 
 const Stack = createStackNavigator();
@@ -70,8 +70,8 @@ const Stack = createStackNavigator();
           />
           <Stack.Screen
             style={{ backgroundColor: '#b11f27' }}
-            name="Иван"
-            component={Ivan}
+            name="ClientPage"
+            component={ClientPage}
             options={{
               title: 'О клиенте',
               headerStyle: {

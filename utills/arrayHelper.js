@@ -11,5 +11,3 @@ const getDoubleArray = (array) => {
     return [...array, ...aray];  
 }
 export default getDoubleArray
-
-// можно переименовывать как угодно 54.39 Урок 10

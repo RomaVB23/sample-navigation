@@ -7,7 +7,6 @@ import {
   TouchableOpacity,
   FlatList,
   Button,
-  TextInput
 } from 'react-native';
 import ClientName from '../components/ClientName';
 // 
@@ -21,7 +20,7 @@ export default function Clients({ navigation }) {
     else if (item.age < 20) blockcolor = 'green';
     return (
       <TouchableOpacity
-        onPress={() => navigation.navigate('Иван', { client: item })}>
+        onPress={() => navigation.navigate('ClientPage', { client: item })}>
         <ClientName text={item.fullname} color={blockcolor} />
       </TouchableOpacity>
     );
@@ -74,31 +73,14 @@ export default function Clients({ navigation }) {
   const [clients, setClients] = useState(oldClients);
   const [filterClients, setFilterClients] = useState(oldClients);
   //
-  // хуки изменения поля ввода имени клиента
-  const [nameClient, setNameClient] = useState();
-  const [surmameClient, setSurnameClient] = useState ();
+
   // 
   // функция добавления клиента
-  const addClient = () => {
-    const client = {
-      name: nameClient,
-      surname: surmameClient,
-      fullname: nameClient + " " + surmameClient,
-      pantomic: '',
-      telephone: '',
-      cardNumber: 100500,
-      clientlocked: 'Нет',
-      numberCoupons: 3,
-      onHands: 6,
-      age: 13,
-     }
-    setClients([...clients, client]);
-  };
   const onAddClient = (client) => {
     setClients([...clients, client])
   }
   // 
-  // 
+  //  сортировка клиентов 
   const [open, setOpen] = useState(false);
   const [value, setValue] = useState(null);
   const [items, setItems] = useState([
@@ -114,37 +96,24 @@ export default function Clients({ navigation }) {
     setFilterClients(newFilterClients)
   }, [value, clients])
 
-
-  // В Экспо 
-  // const array = [1, 2, 3, 4, 5];
-  // for (let index = 0; index < array.length; index++) {
-  //   console.log('index', index);
-  //   const element = array[index];
-  //   console.log('element', element);  
-  // }
-
   return (
     <SafeAreaView style={styles.page}>
       
-      <DropDownPicker
-      open={open}
-      value={value}
-      items={items}
-      setOpen={setOpen}
-      setValue={setValue}
-      setItems={setItems}
-    />
-
-
-      <TextInput style={styles.input} onChangeText={setNameClient} value={nameClient} placeholder="Введите Имя" />
-      <TextInput style={styles.input} onChangeText={setSurnameClient} value={surmameClient} placeholder="Введите Фамилию"/>
-      <Button title="Внести в базу" onPress={() => addClient()}></Button>
-
       <View style={styles.viewLine}></View>
         <Button title="Внести данные клиента в отдельном окне" onPress={() => { return navigation.navigate('InputPage', {onAddClient})}}></Button>
       <View style={styles.viewLine}></View>
+      
+      <DropDownPicker style={styles.select}
+        open={open}
+        items={items}
+        setOpen={setOpen}
+        setValue={setValue}
+        setItems={setItems}
+        value={value}
+      />
 
       <FlatList data={filterClients} renderItem={baseClients} />
+
     </SafeAreaView>
   );
 }
@@ -154,22 +123,14 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: 'center',
   },
-  input: {
-    marginVertical: 10,
-    height: 43,
-    borderWidth: 1,
-    borderRadius: 5,
-    borderColor: '#C4C4C4',
-    paddingLeft: 15,
-    fontWeight: '400',
-    fontSize: 16,
-    width: '70%',
-  },
   viewLine: {
     height: 2,
     backgroundColor: 'red',
     width: '100%',
     marginVertical: 20,
+  },
+  select: {
+    backgroundColor: 'silver'
   },
 }
 );

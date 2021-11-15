@@ -33,11 +33,6 @@ export default class Counter extends React.Component {
       console.log('componentWillUnmount')
     }
 
-    // state = {
-    //   count: 0,
-    //   
-    // }
-  
     increaseCounter = () => {
       this.setState({ count: this.state.count + 1 });
     }
@@ -55,9 +50,8 @@ export default class Counter extends React.Component {
           <Text>{title}</Text>
           <Text>Нажали на кнопку 5 раз {count}</Text>
           <View style={{margin: 10}}/>
-          <Text>{this.state.title}</Text>
-          <Text>Нажали на кнопку 5 раз {this.state.count}</Text>
           <Button title="Поменяй счетчик" onPress={this.increaseCounter}/>
+          <View style={{margin: 5}}/>
           <Button title="Поменяй текст" onPress={this.changeText}/>
         </View>
       );
