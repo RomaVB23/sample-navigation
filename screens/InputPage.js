@@ -1,40 +1,79 @@
-import React, { useState } from 'react';
+import React, {useReducer } from 'react';
 import { Text, View, StyleSheet, SafeAreaView, TextInput, Button} from 'react-native';
 import Counter from '../components/Counter';
 
 export default function InputPage({ navigation, route}) {
 
   const onAddClient = route.params.onAddClient
-  const [nameC, setNameC] = useState();
-  const [surmameC, setSurnameC] = useState ();
-  const [ageC, setAgeC] = useState ();
+  
+  const initialValue = {
+    id: '',
+    name: '',
+    surname: '',
+    age: '',
+    fullname: '',
+    position: 'директор',
+    pantomic: 'Иванов',
+    telephone: '+7-934-239-94-01',
+    cardNumber: '193991',
+    clientlocked: 'Нет',
+    numberCoupons: 7,
+    onHands: 2,
+    
+  };
+  
+  const reducer = (state, action) => {
+    switch (action.type) {
+      case 'name':
+        return {...state, name: action.payload, fullname: `${action.payload} ${state.surname}`, id: `${action.payload}` };
+      case 'surname':
+        return {...state, surname: action.payload, fullname: `${state.name} ${action.payload}` };
+      case 'age':
+        return { ...state, age: action.payload };
+      default:
+        throw new Error('Unknown action type');
+    }
+  };
 
+  
+    const [state, dispatch] = useReducer(reducer, initialValue);
+// 
+  // 
   return (
     <SafeAreaView style={styles.page}>
-      <Counter title='Constructor'/>
       <View style={styles.viewInput}>
         <Text style={styles.textInput}>Введите имя</Text> 
-        <TextInput style={styles.input} onChangeText={setNameC} value={nameC} placeholder="Например Роман" />
+        <TextInput style={styles.input}
+                   placeholder="Например Роман"
+                   value={state.name} 
+                   onChangeText={(text) =>
+                   dispatch({ type: 'name', payload: text })
+                  }  />
       </View>
+
       <View style={styles.viewInput}>
         <Text style={styles.textInput}>Введите Фамилию</Text> 
-        <TextInput style={styles.input} onChangeText={setSurnameC} value={surmameC} placeholder="Например Васильев"/>
+        <TextInput style={styles.input}
+                   placeholder="Например Васильев"
+                   value={state.surname} 
+                   onChangeText={(text) =>
+                   dispatch({ type: 'surname', payload: text })
+                  }  />
       </View>
+
+
       <View style={styles.viewInput}>
         <Text style={styles.textInput}>Введите Возраст</Text> 
-        <TextInput style={[styles.input, styles.inputDown]} onChangeText={setAgeC} value={ageC} placeholder="Просто цифрами" />
+        <TextInput style={styles.input}
+                   placeholder="Просто цифрами"
+                   value={state.age} 
+                   onChangeText={(text) =>
+                   dispatch({ type: 'age', payload: text })
+                  }  />
       </View>  
 
-      <Button title="Внести в базу" onPress={() => {
-        const clientParams =  
-          {
-          name:nameC,
-          surname: surmameC,
-          fullname: nameC + " " + surmameC,
-          age: ageC,
-          position: 'директор'
-          }
-        onAddClient (clientParams);
+      <Button title="Внести в базу" onPress={() => { 
+        onAddClient (state);
         navigation.goBack();
       }}
       />
@@ -42,7 +81,6 @@ export default function InputPage({ navigation, route}) {
     </SafeAreaView>
   );
 }
-
 
 const styles = StyleSheet.create({
   page: {

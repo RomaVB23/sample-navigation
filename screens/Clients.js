@@ -39,7 +39,8 @@ export default function Clients({ navigation }) {
       numberCoupons: 3,
       onHands: 6,
       age: 13,
-      position: 'дворник'
+      position: 'дворник',
+      id: "old_clients_Ivan"
     },
     {
       name: 'Daria',
@@ -52,7 +53,8 @@ export default function Clients({ navigation }) {
       numberCoupons: 12,
       onHands: 1,
       age: 43,
-      position: 'бухгалтер'
+      position: 'бухгалтер',
+      id: "old_clients_Daria"
     },
     {
       name: 'Elena',
@@ -65,7 +67,8 @@ export default function Clients({ navigation }) {
       numberCoupons: 7,
       onHands: 2,
       age: 20,
-      position: 'дворник'
+      position: 'дворник',
+      id: "old_clients_Elena"
     },
   ];
   //
@@ -93,15 +96,19 @@ export default function Clients({ navigation }) {
     console.log('new selected value', value);
     const newFilterClients = clients.filter(client => client.position === value);
     console.log('filterClients', newFilterClients);
-    setFilterClients(newFilterClients)
+    setFilterClients(value === undefined || value === null ? clients : newFilterClients)
   }, [value, clients])
 
   return (
     <SafeAreaView style={styles.page}>
       
       <View style={styles.viewLine}></View>
-        <Button title="Внести данные клиента в отдельном окне" onPress={() => { return navigation.navigate('InputPage', {onAddClient})}}></Button>
+        <Button title="Внести данные клиента в отдельном окне useState" onPress={() => { return navigation.navigate('InputPage_useState', {onAddClient})}}></Button>
       <View style={styles.viewLine}></View>
+
+      <View style={styles.viewLineBlue}></View>
+        <Button title="Внести данные клиента в отдельном окне useReducer" onPress={() => { return navigation.navigate('InputPage', {onAddClient})}}></Button>
+      <View style={styles.viewLineBlue}></View>
       
       <DropDownPicker style={styles.select}
         open={open}
@@ -112,8 +119,10 @@ export default function Clients({ navigation }) {
         value={value}
       />
 
-      <FlatList data={filterClients} renderItem={baseClients} />
-
+      <FlatList data={filterClients} 
+                renderItem={baseClients}  
+                keyExtractor={(myKey) => myKey.id}
+                />
     </SafeAreaView>
   );
 }
@@ -127,10 +136,16 @@ const styles = StyleSheet.create({
     height: 2,
     backgroundColor: 'red',
     width: '100%',
-    marginVertical: 20,
+    marginVertical: 10,
   },
   select: {
     backgroundColor: 'silver'
+  },
+  viewLineBlue: {
+    height: 2,
+    backgroundColor: 'blue',
+    width: '100%',
+    marginBottom: 20,
   },
 }
 );

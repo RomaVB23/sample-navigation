@@ -24,6 +24,7 @@ import {
 import Clients from './screens/Clients';
 import ClientPage from './screens/ClientPage';
 import InputPage from './screens/InputPage';
+import InputPage_useState from './screens/InputPage_useState';
 
 const Stack = createStackNavigator();
   export default function App({ navigation }) {
@@ -92,6 +93,27 @@ const Stack = createStackNavigator();
           <Stack.Screen
             name="InputPage"
             component={InputPage}
+            options={{
+              title: 'Добавить Клиента',
+              headerStyle: {
+                backgroundColor: '#E02329',
+                borderTopColor: '#b11f27',
+                borderTopWidth: 24,
+                height: 80,
+                // padding: 100,
+              },
+              headerTintColor: '#fff',
+              headerTitleStyle: {
+                fontFamily: 'Roboto_500Medium',
+                fontSize: 20,
+                fontWeight: '500',
+              },
+              headerBackTitleVisible: false,
+            }}
+          />
+           <Stack.Screen
+            name="InputPage_useState"
+            component={InputPage_useState}
             options={{
               title: 'Добавить Клиента',
               headerStyle: {
