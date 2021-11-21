@@ -19,14 +19,21 @@ import {
   Roboto_900Black_Italic,
 } from '@expo-google-fonts/roboto';
 // 
-
 // Blocks
 import Clients from './screens/Clients';
 import ClientPage from './screens/ClientPage';
 import InputPage from './screens/InputPage';
 import InputPage_useState from './screens/InputPage_useState';
+// 
+// Reduser
+import { Provider } from 'react-redux';
+import { createStore } from 'redux';
+import combineReducers from './reducers';
 
+
+const store = createStore(combineReducers);
 const Stack = createStackNavigator();
+
   export default function App({ navigation }) {
     let [fontsLoaded] = useFonts({
       Roboto_100Thin,
@@ -47,93 +54,95 @@ const Stack = createStackNavigator();
     } else {
 
     return (
-      <NavigationContainer>
-        <Stack.Navigator>
-          <Stack.Screen
-            name="Клиенты"
-            component={Clients}
-            options={{
-              title: 'Клиенты',
-              headerStyle: {
-                backgroundColor: '#E02329',
-                borderTopColor: '#b11f27',
-                borderTopWidth: 24,
-                height: 80,
-                // padding: 100,
-              },
-              headerTintColor: '#fff',
-              headerTitleStyle: {
-                fontFamily: 'Roboto_500Medium',
-                fontSize: 20,
-                fontWeight: '500',
-              },
-            }}
-          />
-          <Stack.Screen
-            style={{ backgroundColor: '#b11f27' }}
-            name="ClientPage"
-            component={ClientPage}
-            options={{
-              title: 'О клиенте',
-              headerStyle: {
-                backgroundColor: '#E02329',
-                borderTopColor: '#b11f27',
-                borderTopWidth: 24,
-                height: 80,
-                // padding: 100,
-              },
-              headerTintColor: '#fff',
-              headerTitleStyle: {
-                fontFamily: 'Roboto_500Medium',
-                fontSize: 20,
-                fontWeight: '500',
-              },
-            }}
-          />
-          <Stack.Screen
-            name="InputPage"
-            component={InputPage}
-            options={{
-              title: 'Добавить Клиента',
-              headerStyle: {
-                backgroundColor: '#E02329',
-                borderTopColor: '#b11f27',
-                borderTopWidth: 24,
-                height: 80,
-                // padding: 100,
-              },
-              headerTintColor: '#fff',
-              headerTitleStyle: {
-                fontFamily: 'Roboto_500Medium',
-                fontSize: 20,
-                fontWeight: '500',
-              },
-              headerBackTitleVisible: false,
-            }}
-          />
-           <Stack.Screen
-            name="InputPage_useState"
-            component={InputPage_useState}
-            options={{
-              title: 'Добавить Клиента',
-              headerStyle: {
-                backgroundColor: '#E02329',
-                borderTopColor: '#b11f27',
-                borderTopWidth: 24,
-                height: 80,
-                // padding: 100,
-              },
-              headerTintColor: '#fff',
-              headerTitleStyle: {
-                fontFamily: 'Roboto_500Medium',
-                fontSize: 20,
-                fontWeight: '500',
-              },
-              headerBackTitleVisible: false,
-            }}
-          />
-        </Stack.Navigator>
-      </NavigationContainer>
+      <Provider store={store}>
+        <NavigationContainer>
+          <Stack.Navigator>
+            <Stack.Screen
+              name="Клиенты"
+              component={Clients}
+              options={{
+                title: 'Клиенты',
+                headerStyle: {
+                  backgroundColor: '#E02329',
+                  borderTopColor: '#b11f27',
+                  borderTopWidth: 24,
+                  height: 80,
+                  // padding: 100,
+                },
+                headerTintColor: '#fff',
+                headerTitleStyle: {
+                  fontFamily: 'Roboto_500Medium',
+                  fontSize: 20,
+                  fontWeight: '500',
+                },
+              }}
+            />
+            <Stack.Screen
+              style={{ backgroundColor: '#b11f27' }}
+              name="ClientPage"
+              component={ClientPage}
+              options={{
+                title: 'О клиенте',
+                headerStyle: {
+                  backgroundColor: '#E02329',
+                  borderTopColor: '#b11f27',
+                  borderTopWidth: 24,
+                  height: 80,
+                  // padding: 100,
+                },
+                headerTintColor: '#fff',
+                headerTitleStyle: {
+                  fontFamily: 'Roboto_500Medium',
+                  fontSize: 20,
+                  fontWeight: '500',
+                },
+              }}
+            />
+            <Stack.Screen
+              name="InputPage"
+              component={InputPage}
+              options={{
+                title: 'Добавить Клиента',
+                headerStyle: {
+                  backgroundColor: '#E02329',
+                  borderTopColor: '#b11f27',
+                  borderTopWidth: 24,
+                  height: 80,
+                  // padding: 100,
+                },
+                headerTintColor: '#fff',
+                headerTitleStyle: {
+                  fontFamily: 'Roboto_500Medium',
+                  fontSize: 20,
+                  fontWeight: '500',
+                },
+                headerBackTitleVisible: false,
+              }}
+            />
+            <Stack.Screen
+              name="InputPage_useState"
+              component={InputPage_useState}
+              options={{
+                title: 'Добавить Клиента',
+                headerStyle: {
+                  backgroundColor: '#E02329',
+                  borderTopColor: '#b11f27',
+                  borderTopWidth: 24,
+                  height: 80,
+                  // padding: 100,
+                },
+                headerTintColor: '#fff',
+                headerTitleStyle: {
+                  fontFamily: 'Roboto_500Medium',
+                  fontSize: 20,
+                  fontWeight: '500',
+                },
+                headerBackTitleVisible: false,
+              }}
+            />
+          </Stack.Navigator>
+        </NavigationContainer>
+      </Provider>
     );
     }
   }

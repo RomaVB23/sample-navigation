@@ -11,7 +11,8 @@ import {
 import ClientName from '../components/ClientName';
 // 
 import DropDownPicker from 'react-native-dropdown-picker';
-
+import { useSelector, useDispatch } from 'react-redux'
+import { addClient } from '../reducers/clientsReducer';
 
 export default function Clients({ navigation }) {
   const baseClients = ({ item }) => {
@@ -26,6 +27,15 @@ export default function Clients({ navigation }) {
     );
   };
   //
+
+
+  // ReactRedux
+  const counter = useSelector((state) => state.clients);
+  console.log('kff', counter)
+  const dispatch = useDispatch()
+  // 
+
+
   // Список Клиентов 
   const oldClients = [
     {
@@ -81,6 +91,7 @@ export default function Clients({ navigation }) {
   // функция добавления клиента
   const onAddClient = (client) => {
     setClients([...clients, client])
+    dispatch(addClient(client))
   }
   // 
   //  сортировка клиентов 
@@ -99,6 +110,7 @@ export default function Clients({ navigation }) {
     setFilterClients(value === undefined || value === null ? clients : newFilterClients)
   }, [value, clients])
 
+  
   return (
     <SafeAreaView style={styles.page}>
       
@@ -107,7 +119,7 @@ export default function Clients({ navigation }) {
       <View style={styles.viewLine}></View>
 
       <View style={styles.viewLineBlue}></View>
-        <Button title="Внести данные клиента в отдельном окне useReducer" onPress={() => { return navigation.navigate('InputPage', {onAddClient})}}></Button>
+        <Button title={`Внести данные клиента в отдельном окне \n useReducer`} onPress={() => { return navigation.navigate('InputPage', {onAddClient})}}></Button>
       <View style={styles.viewLineBlue}></View>
       
       <DropDownPicker style={styles.select}

@@ -35,7 +35,7 @@ export default function InputPage({ navigation, route}) {
     }
   };
 
-  
+
     const [state, dispatch] = useReducer(reducer, initialValue);
 // 
   // 
