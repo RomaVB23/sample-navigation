@@ -24,6 +24,7 @@ import Clients from './screens/Clients';
 import ClientPage from './screens/ClientPage';
 import InputPage from './screens/InputPage';
 import InputPage_useState from './screens/InputPage_useState';
+import Registration from './screens/Registration'
 // 
 // Reduser
 import { Provider } from 'react-redux';
@@ -31,7 +32,7 @@ import { createStore } from 'redux';
 import combineReducers from './reducers';
 
 
-const store = createStore(combineReducers);
+const store = createStore(combineReducers, window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__());
 const Stack = createStackNavigator();
 
   export default function App({ navigation }) {
@@ -57,6 +58,23 @@ const Stack = createStackNavigator();
       <Provider store={store}>
         <NavigationContainer>
           <Stack.Navigator>
+          <Stack.Screen
+              name="Registration"
+              component={Registration}
+              options={{
+                title: 'Регистрация',
+                headerStyle: {
+                  height: 80,
+                },
+                headerTintColor: '#000000',
+                headerTitleStyle: {
+                  fontFamily: 'Roboto_500Medium',
+                  fontSize: 18,
+                  fontWeight: '500',
+                },
+                headerBackTitleVisible: false,
+              }}
+            />
             <Stack.Screen
               name="Клиенты"
               component={Clients}
@@ -65,7 +83,7 @@ const Stack = createStackNavigator();
                 headerStyle: {
                   backgroundColor: '#E02329',
                   borderTopColor: '#b11f27',
-                  borderTopWidth: 24,
+                  borderTopWidth: 35,
                   height: 80,
                   // padding: 100,
                 },
@@ -86,7 +104,7 @@ const Stack = createStackNavigator();
                 headerStyle: {
                   backgroundColor: '#E02329',
                   borderTopColor: '#b11f27',
-                  borderTopWidth: 24,
+                  borderTopWidth: 35,
                   height: 80,
                   // padding: 100,
                 },
@@ -106,7 +124,7 @@ const Stack = createStackNavigator();
                 headerStyle: {
                   backgroundColor: '#E02329',
                   borderTopColor: '#b11f27',
-                  borderTopWidth: 24,
+                  borderTopWidth: 35,
                   height: 80,
                   // padding: 100,
                 },
@@ -127,7 +145,7 @@ const Stack = createStackNavigator();
                 headerStyle: {
                   backgroundColor: '#E02329',
                   borderTopColor: '#b11f27',
-                  borderTopWidth: 24,
+                  borderTopWidth: 35,
                   height: 80,
                   // padding: 100,
                 },
@@ -140,6 +158,7 @@ const Stack = createStackNavigator();
                 headerBackTitleVisible: false,
               }}
             />
+           
           </Stack.Navigator>
         </NavigationContainer>
       </Provider>

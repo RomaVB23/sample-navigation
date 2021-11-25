@@ -14,7 +14,8 @@ import DropDownPicker from 'react-native-dropdown-picker';
 import { useSelector, useDispatch } from 'react-redux'
 import { addClient } from '../reducers/clientsReducer';
 
-export default function Clients({ navigation }) {
+
+export default function Clients({ navigation, route }) {
   const baseClients = ({ item }) => {
     let blockcolor = 'red';
     if (item.age > 40) blockcolor = 'pink';
@@ -31,7 +32,9 @@ export default function Clients({ navigation }) {
 
   // ReactRedux
   const counter = useSelector((state) => state.clients);
+  const profile = useSelector(state => state.profile);
   console.log('kff', counter)
+  console.log ('ищу тебя', profile)
   const dispatch = useDispatch()
   // 
 
@@ -101,6 +104,7 @@ export default function Clients({ navigation }) {
     {label: 'Дворник', value: 'дворник'},
     {label: 'Бухгалтер', value: 'бухгалтер'},
     {label: 'Директор', value:'директор'},
+    {label: 'Регистрация', value:'регистрация'},
   ]);
 
   useEffect(() => {
@@ -110,9 +114,18 @@ export default function Clients({ navigation }) {
     setFilterClients(value === undefined || value === null ? clients : newFilterClients)
   }, [value, clients])
 
-  
+  // 
+  //Registration 
+//  const profile = route.params.profile
+//  console.log('rrrrrr', profile)
+
+
   return (
     <SafeAreaView style={styles.page}>
+
+      <View style={styles.viewLine}></View>
+        <Text style={styles.textProfile}>Вы авторизовались как {profile.name} {profile.surname}</Text>
+      <View style={styles.viewLine}></View>
       
       <View style={styles.viewLine}></View>
         <Button title="Внести данные клиента в отдельном окне useState" onPress={() => { return navigation.navigate('InputPage_useState', {onAddClient})}}></Button>
@@ -121,6 +134,7 @@ export default function Clients({ navigation }) {
       <View style={styles.viewLineBlue}></View>
         <Button title={`Внести данные клиента в отдельном окне \n useReducer`} onPress={() => { return navigation.navigate('InputPage', {onAddClient})}}></Button>
       <View style={styles.viewLineBlue}></View>
+
       
       <DropDownPicker style={styles.select}
         open={open}
@@ -158,6 +172,10 @@ const styles = StyleSheet.create({
     backgroundColor: 'blue',
     width: '100%',
     marginBottom: 20,
+  },
+  textProfile: {
+    fontSize: 20,
+    fontWeight: '600',
   },
 }
 );

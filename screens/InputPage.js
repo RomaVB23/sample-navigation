@@ -1,6 +1,6 @@
 import React, {useReducer } from 'react';
 import { Text, View, StyleSheet, SafeAreaView, TextInput, Button} from 'react-native';
-import Counter from '../components/Counter';
+
 
 export default function InputPage({ navigation, route}) {
 
