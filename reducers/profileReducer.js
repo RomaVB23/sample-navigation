@@ -6,14 +6,13 @@ const initionalState = {
     surname: '',
     telephone: '',
     e_mail: '',
-    position: 'регистрация',
-    
+    signedUp: false
   };
   
   const profileReducer = (state = initionalState, action) => {
     switch (action.type) {
       case REGISTRATION:
-        return {...action.payload.user};
+        return {...action.payload.user, signedUp: true};
       default:
         return state;
     }

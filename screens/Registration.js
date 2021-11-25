@@ -1,7 +1,7 @@
 import React,{useReducer} from "react";
 import { SafeAreaView, StyleSheet, TextInput, Text, View, TouchableOpacity} from "react-native";
 import {registration} from '../reducers/profileReducer';
-import {useDispatch } from 'react-redux'
+import {useDispatch } from 'react-redux';
 
 const registrationBase = {
   id: '',
@@ -16,7 +16,7 @@ const registrationBase = {
 const reducer = (state, action) => {
   switch (action.type) {
     case 'name':
-      return {...state, name: action.payload,  id:`${action.payload}` };
+      return {...state, name: action.payload,  id:`key_000_${action.payload}` };
     case 'surname':
       return {...state, surname: action.payload };
     case 'telephone':

@@ -114,12 +114,6 @@ export default function Clients({ navigation, route }) {
     setFilterClients(value === undefined || value === null ? clients : newFilterClients)
   }, [value, clients])
 
-  // 
-  //Registration 
-//  const profile = route.params.profile
-//  console.log('rrrrrr', profile)
-
-
   return (
     <SafeAreaView style={styles.page}>
 
