@@ -129,6 +129,14 @@ export default function Clients({ navigation, route }) {
         <Button title={`Внести данные клиента в отдельном окне \n useReducer`} onPress={() => { return navigation.navigate('InputPage', {onAddClient})}}></Button>
       <View style={styles.viewLineBlue}></View>
 
+     
+      <Button title="Внести в базу" onPress={() => { 
+    
+        navigation.navigate('Регистрация');
+      }}
+      />
+  
+
       
       <DropDownPicker style={styles.select}
         open={open}
