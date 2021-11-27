@@ -8,9 +8,7 @@ const registrationBase = {
   name: '',
   surname: '',
   telephone: '',
-  e_mail: '',
-  position: 'регистрация',
-  
+  e_mail: '',  
 };
 
 const reducer = (state, action) => {
