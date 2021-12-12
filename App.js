@@ -40,9 +40,11 @@ const persistConfig = {
   storage: AsyncStorage,
 }
 const persistedReducer = persistReducer(persistConfig, combineReducers)
-// 
 
+// отделным фвйлом, но что-то не работает 
 // import configureStore from './utills/configureStore';
+{/* <Provider store={configureStore.store}> */}
+{/* <PersistGate persistor={configureStore.persistor}> */}
 
 export default function App({ navigation }) {
   let store = createStore(persistedReducer, window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__())
